@@ -3,6 +3,7 @@ import 'package:pull_to_reach/widgets/reachable_icon.dart';
 import 'package:pull_to_reach/widgets/pull_to_reach_scope.dart';
 import 'package:pull_to_reach/widgets/reachable.dart';
 import 'package:pull_to_reach/widgets/scroll_to_index_converter.dart';
+import 'package:pull_to_refresh/testReachable.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
 class PullToReach extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool _isFocused = false;
     return PullToReachContext(indexCount: 4,
         child: Scaffold(
           appBar: AppBar(
@@ -42,13 +44,11 @@ class PullToReach extends StatelessWidget {
                   print("test2");
                 },
               ),
-              ReachableIcon(
-                icon: Icon(Icons.add_photo_alternate),
-                index: 3,
-                onSelect: () {
-                  print("test");
-                },
-              ),
+              testReachable(
+                  child: Icon(Icons.share),
+                  index: 3,
+                  onSelect: null
+              )
             ],
           ),
           body: ScrollToIndexConverter(
